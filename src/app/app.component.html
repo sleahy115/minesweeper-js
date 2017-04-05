@@ -12,4 +12,7 @@
       <h2>Sorry you lose, would you like to play again?</h2>
       <button (click)="createBoard()">Play again</button>
   </div>
+  <div *ngIf="win">
+    <h1>You Win!</h1>
+  </div>
 </div>

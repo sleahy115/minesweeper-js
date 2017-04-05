@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   numBombs:number = null;
   rows = [];
   end:string = null;
+  win:boolean = false;
+  actualBombs: number = 0;
 
   constructor(){}
 
@@ -20,8 +22,8 @@ export class AppComponent implements OnInit {
     this.rows = [];
     this.end = "notOver";
     if(this.difficulty === "beginner"){
-      this.numRows = 10;
-      this.numCols = 10;
+      this.numRows = 1;
+      this.numCols = 1;
       this.numBombs = 10;
     } else if( this.difficulty === "intermediate"){
       this.numRows = 16;
@@ -41,6 +43,7 @@ export class AppComponent implements OnInit {
 
         if(Math.random() < (this.numBombs/(this.numRows*this.numCols))){
           bomb = true;
+          this.actualBombs++;
         }
 
         var col = {
@@ -103,10 +106,18 @@ export class AppComponent implements OnInit {
       }
     }
   }
-
+  ifGameOver(){
+    console.log(this.end);
+    console.log(this.win);
+    if(this.end!="notOver" || this.win){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   checkTile(col){
-    if(col.class != "marked" && col.class != "question"){
+    if(col.class != "marked" && col.class != "question" && !this.ifGameOver()){
       col.visible = true;
       var classDict = {
         1:"one",
@@ -139,7 +150,10 @@ export class AppComponent implements OnInit {
       if(col.number === 0  && col.bomb === false){
         this.revealEmpty(col);
       }
+      this.isGameWon();
     }
+
+
   }
   revealEmpty(col){
     if(col.bomb === false && col.visable === false){
@@ -163,17 +177,39 @@ export class AppComponent implements OnInit {
       }
     }
   }
+  isGameWon(){
+    var bombs = 0;
+    var marks = 0;
+
+    for(var y = 0; y <= this.numRows; y++){
+      for(var x = 0; x <= this.numCols; x++){
+        if(this.rows[y][x].class==="grey"){
+          break;
+        }
+        if(this.rows[y][x].bomb && this.rows[y][x].class==="marked"){
+          marks++;
+        }
+
+      }
+    }
+    if(this.actualBombs === marks){
+      this.win=true;
+    }
+  }
 
   markTile(event, col) {
     event.preventDefault();
-    if(col.class==="question"){
-      col.class="grey";
-    } else if (col.class === "marked"){//event.button === 2 &&
-      col.class = "question";
-    } else if(col.class === "grey"){
-      col.class = "marked";
-    }
+    if(!this.ifGameOver()){
+      if(col.class==="question"){
+        col.class="grey";
+      } else if (col.class === "marked"){//event.button === 2 &&
+        col.class = "question";
+      } else if(col.class === "grey"){
+        col.class = "marked";
+      }
+      this.isGameWon();
 
+    }
   }
 
   ngOnInit(){
