@@ -43,7 +43,10 @@ export class AppComponent implements OnInit {
 
         var col = {
           bomb: bomb,
-          number: 0
+          number: 0,
+          visible: false,
+          class: "grey",
+          coords: x + "-" + y
         }
 
         cols.push(col);
@@ -100,7 +103,9 @@ export class AppComponent implements OnInit {
 
   }
 
-  ifBomb(col){
+
+  checkTile(col){
+    col.visible = true;
     var classDict = {
       1:"green",
       2:"blue",
@@ -108,10 +113,15 @@ export class AppComponent implements OnInit {
       4:"red"
     };
     if(col.bomb){
-      return "black";
+      col.class = "black";
+      col.number = 99;
     } else {
-      return classDict[col.number];
+      col.class = classDict[col.number];
     }
+    console.log(col.coords);
+    console.log(col);
+
+
   }
 
   ngOnInit(){
@@ -119,6 +129,6 @@ export class AppComponent implements OnInit {
   }
 
   ngDoCheck(){
-    this.createBoard();
+    // this.createBoard();
   }
 }

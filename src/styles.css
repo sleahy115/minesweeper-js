@@ -37,3 +37,7 @@ td {
 .green {
   background-color: green;
 }
+.grey {
+  background-color: gray;
+  /*color: rgba(0, 0, 0, 0);*/
+}

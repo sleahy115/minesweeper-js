@@ -4,7 +4,7 @@
   <table id="gameTable">
     <tbody>
       <tr *ngFor="let row of rows">
-        <td [class]="ifBomb(col)" *ngFor="let col of row">{{col.number}}</td>
+        <td (click)="checkTile(col)" [class]="col.class" *ngFor="let col of row">{{col.number}}</td>
       </tr>
     <tbody>
   </table>
