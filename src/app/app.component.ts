@@ -44,9 +44,10 @@ export class AppComponent implements OnInit {
         var col = {
           bomb: bomb,
           number: 0,
-          visible: false,
+          visable: false,
           class: "grey",
-          coords: x + "-" + y
+          x: x,
+          y: y
         }
 
         cols.push(col);
@@ -110,18 +111,44 @@ export class AppComponent implements OnInit {
       1:"green",
       2:"blue",
       3:"orange",
-      4:"red"
+      4:"black"
     };
     if(col.bomb){
-      col.class = "black";
+      col.class = "red";
       col.number = 99;
     } else {
       col.class = classDict[col.number];
     }
-    console.log(col.coords);
-    console.log(col);
 
+    if(col.number === 0  && col.bomb === false){
+      this.revealEmpty(col);
 
+    }
+
+  }
+
+  revealEmpty(col){
+    if(col.bomb === false && col.visable === false){
+      col.visable = true;
+      console.log(col);
+
+      if(col.x > 0){
+        this.checkTile(this.rows[col.y][col.x-1]);
+        console.log("recursion");
+      }
+      if(col.x < this.numRows){
+        this.checkTile(this.rows[col.y][col.x+1]);
+        console.log("recursion");
+      }
+      if(col.y < this.numCols){
+        this.checkTile(this.rows[col.y+1][col.x]);
+        console.log("recursion");
+      }
+      if(col.y > 0){
+        this.checkTile(this.rows[col.y-1][col.x]);
+        console.log("recursion");
+      }
+    }
   }
 
   ngOnInit(){
