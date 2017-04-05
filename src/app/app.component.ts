@@ -15,15 +15,20 @@ export class AppComponent implements OnInit {
   end:string = null;
   win:boolean = false;
   actualBombs: number = 0;
+  score:number = 0;
+  finalScore:number = 0;
+  timerInterval;
 
   constructor(){}
 
-  createBoard(){
+  createBoard(difficulty){
+    console.log(difficulty);
+    this.difficulty = difficulty;
     this.rows = [];
     this.end = "notOver";
     if(this.difficulty === "beginner"){
-      this.numRows = 1;
-      this.numCols = 1;
+      this.numRows = 10;
+      this.numCols = 10;
       this.numBombs = 10;
     } else if( this.difficulty === "intermediate"){
       this.numRows = 16;
@@ -107,8 +112,6 @@ export class AppComponent implements OnInit {
     }
   }
   ifGameOver(){
-    console.log(this.end);
-    console.log(this.win);
     if(this.end!="notOver" || this.win){
       return true;
     } else {
@@ -117,6 +120,11 @@ export class AppComponent implements OnInit {
   }
 
   checkTile(col){
+    if(!this.timerInterval){
+      this.timerInterval = setInterval(fat=>{
+        this.score++;
+      },1000);
+    }
     if(col.class != "marked" && col.class != "question" && !this.ifGameOver()){
       col.visible = true;
       var classDict = {
@@ -136,7 +144,6 @@ export class AppComponent implements OnInit {
         for(var y = 0; y <= this.numRows; y++){
           for(var x = 0; x <= this.numCols; x++){
             if(this.rows[y][x].bomb && !this.rows[y][x].visable){
-              console.log("bomb");
               this.rows[y][x].visable = true;
               this.rows[y][x].class = "bomb";
             }
@@ -194,6 +201,8 @@ export class AppComponent implements OnInit {
     }
     if(this.actualBombs === marks){
       this.win=true;
+      this.finalScore = this.score;
+      this.timerInterval.clear();
     }
   }
 
@@ -213,7 +222,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.createBoard();
+    this.createBoard(this.difficulty);
   }
 
   ngDoCheck(){

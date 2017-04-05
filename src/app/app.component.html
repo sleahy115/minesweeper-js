@@ -1,4 +1,11 @@
-<h1>{{title}}</h1>
+<h1>{{score}}</h1>
+<h1>{{finalScore}}</h1>
+<select #difficultyInput>
+  <option value="beginner">beginner</option>
+  <option value="intermediate">intermediate</option>
+  <option value="expert">expert</option>
+</select>
+<button (click)="createBoard(difficultyInput.value)">Play</button>
 
 <div id="game">
   <table id="gameTable">
@@ -10,7 +17,7 @@
   </table>
   <div [class]="end">
       <h2>Sorry you lose, would you like to play again?</h2>
-      <button (click)="createBoard()">Play again</button>
+      <button (click)="createBoard(difficultyInput.value)">Play again</button>
   </div>
   <div *ngIf="win">
     <h1>You Win!</h1>
