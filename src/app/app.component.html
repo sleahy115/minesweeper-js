@@ -1,3 +1,11 @@
-<h1>
-  {{title}}
-</h1>
+<h1>{{title}}</h1>
+
+<div id="game">
+  <table id="gameTable">
+    <tbody>
+      <tr *ngFor="let row of rows">
+        <td [class]="ifBomb(col)" *ngFor="let col of row">{{col.number}}</td>
+      </tr>
+    <tbody>
+  </table>
+</div>

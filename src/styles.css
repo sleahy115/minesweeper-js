@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  color:white;
+  font-weight: bold;
+}
+table{
+  border: 1px solid lightgrey;
+}
+
+tr {
+  border: 1px solid grey;
+  height:12px;
+  min-height:12px;
+}
+
+td {
+  border: 1px solid black;
+  width:20px;
+  height:20px;
+  min-width:20px;
+  min-height:20px;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+.orange {
+  background-color: orange;
+}
+.black {
+  background-color: black;
+}
+.green {
+  background-color: green;
+}
