@@ -109,14 +109,17 @@ export class AppComponent implements OnInit {
     if(col.class != "marked"){
       col.visible = true;
       var classDict = {
-        1:"green",
-        2:"blue",
-        3:"orange",
-        4:"black"
+        1:"one",
+        2:"two",
+        3:"three",
+        4:"four",
+        5:"five",
+        6:"six",
+        7:"seven",
+        8:"eight"
       };
       if(col.bomb){
-        col.class = "red";
-        col.number = 99;
+        col.class = "bomb";
         this.end ="end";
 
       } else {

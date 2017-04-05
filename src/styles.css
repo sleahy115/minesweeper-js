@@ -20,31 +20,66 @@ td {
   min-height:20px;
 }
 
-.red {
-  background-color: red;
+.grey {
+  background-image: url("http://www.freeminesweeper.org/images/blank.gif");
+  background-size: 100% 100%;
 }
 
-.blue {
-  background-color: blue;
+.bomb {
+  background-image: url("http://www.freeminesweeper.org/images/bombrevealed.gif");
+  background-size: 100% 100%;
 }
-.orange {
-  background-color: orange;
-}
-.black {
-  background-color: black;
-}
-.green {
-  background-color: green;
-}
-.grey {
-  background-color: #2b7489;
-  color: rgba(0, 0, 0, 0);
-}
-.notOver {
-  display: none;
+
+.question {
+  background-image: url("http://www.freeminesweeper.org/images/bombquestion.gif");
+  background-size: 100% 100%;
 }
 
 .marked {
   background-image: url("http://www.freeminesweeper.org/images/bombflagged.gif");
   background-size: 100% 100%;
+}
+
+.one {
+  background-image: url("http://www.freeminesweeper.org/images/open1.gif");
+  background-size: 100% 100%;
+}
+
+.two {
+  background-image: url("http://www.freeminesweeper.org/images/open2.gif");
+  background-size: 100% 100%;
+}
+
+.three {
+  background-image: url("http://www.freeminesweeper.org/images/open3.gif");
+  background-size: 100% 100%;
+}
+
+.four {
+  background-image: url("http://www.freeminesweeper.org/images/open4.gif");
+  background-size: 100% 100%;
+}
+
+.five {
+  background-image: url("http://www.freeminesweeper.org/images/open5.gif");
+  background-size: 100% 100%;
+}
+
+.six {
+  background-image: url("http://www.freeminesweeper.org/images/open6.gif");
+  background-size: 100% 100%;
+}
+
+.seven {
+  background-image: url("http://www.freeminesweeper.org/images/open7.gif");
+  background-size: 100% 100%;
+}
+
+.eight {
+  background-image: url("http://www.freeminesweeper.org/images/open8.gif");
+  background-size: 100% 100%;
+}
+
+.notOver {
+  display: none;
 }
