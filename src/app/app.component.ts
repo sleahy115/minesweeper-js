@@ -12,11 +12,13 @@ export class AppComponent implements OnInit {
   numCols:number = 10;
   numBombs:number = null;
   rows = [];
+  end:string = null;
 
   constructor(){}
 
   createBoard(){
     this.rows = [];
+    this.end = "notOver";
     if(this.difficulty === "beginner"){
       this.numRows = 10;
       this.numCols = 10;
@@ -97,58 +99,67 @@ export class AppComponent implements OnInit {
               this.rows[y][x].number++;
             }
           }
-
         }
       }
     }
-
   }
 
 
   checkTile(col){
-    col.visible = true;
-    var classDict = {
-      1:"green",
-      2:"blue",
-      3:"orange",
-      4:"black"
-    };
-    if(col.bomb){
-      col.class = "red";
-      col.number = 99;
-    } else {
-      col.class = classDict[col.number];
+    if(col.class != "marked"){
+      col.visible = true;
+      var classDict = {
+        1:"green",
+        2:"blue",
+        3:"orange",
+        4:"black"
+      };
+      if(col.bomb){
+        col.class = "red";
+        col.number = 99;
+        this.end ="end";
+
+      } else {
+        col.class = classDict[col.number];
+      }
+
+      if(col.number === 0  && col.bomb === false){
+        this.revealEmpty(col);
+      }
     }
-
-    if(col.number === 0  && col.bomb === false){
-      this.revealEmpty(col);
-
-    }
-
   }
-
   revealEmpty(col){
     if(col.bomb === false && col.visable === false){
       col.visable = true;
-      console.log(col);
 
       if(col.x > 0){
         this.checkTile(this.rows[col.y][col.x-1]);
-        console.log("recursion");
+
       }
       if(col.x < this.numRows){
         this.checkTile(this.rows[col.y][col.x+1]);
-        console.log("recursion");
+
       }
       if(col.y < this.numCols){
         this.checkTile(this.rows[col.y+1][col.x]);
-        console.log("recursion");
+
       }
       if(col.y > 0){
         this.checkTile(this.rows[col.y-1][col.x]);
-        console.log("recursion");
+
       }
     }
+  }
+
+  markTile(event, col) {
+    event.preventDefault();
+    if (event.button === 2 && col.class === "marked"){
+      col.class = "grey"
+    }
+    else if(event.button === 2 && col.class === "grey"){
+      col.class = "marked";
+    }
+
   }
 
   ngOnInit(){

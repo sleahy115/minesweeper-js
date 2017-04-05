@@ -4,8 +4,12 @@
   <table id="gameTable">
     <tbody>
       <tr *ngFor="let row of rows">
-        <td (click)="checkTile(col)" [class]="col.class" *ngFor="let col of row">{{col.number}}</td>
+        <td (click)="checkTile(col)" [class]="col.class" (contextmenu)="markTile($event, col)" *ngFor="let col of row">{{col.number}}</td>
       </tr>
     <tbody>
   </table>
+  <div [class]="end">
+      <h2>Sorry you lose, would you like to play again?</h2>
+      <button (click)="createBoard()">Play again</button>
+  </div>
 </div>

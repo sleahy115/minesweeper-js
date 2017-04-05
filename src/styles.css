@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  color:white;
   font-weight: bold;
 }
 table{
@@ -38,6 +37,14 @@ td {
   background-color: green;
 }
 .grey {
-  background-color: gray;
+  background-color: #2b7489;
   color: rgba(0, 0, 0, 0);
+}
+.notOver {
+  display: none;
+}
+
+.marked {
+  background-image: url("http://www.freeminesweeper.org/images/bombflagged.gif");
+  background-size: 100% 100%;
 }
