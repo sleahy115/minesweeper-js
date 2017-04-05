@@ -106,7 +106,7 @@ export class AppComponent implements OnInit {
 
 
   checkTile(col){
-    if(col.class != "marked"){
+    if(col.class != "marked" && col.class != "question"){
       col.visible = true;
       var classDict = {
         1:"one",
@@ -156,10 +156,11 @@ export class AppComponent implements OnInit {
 
   markTile(event, col) {
     event.preventDefault();
-    if (event.button === 2 && col.class === "marked"){
-      col.class = "grey"
-    }
-    else if(event.button === 2 && col.class === "grey"){
+    if(col.class==="question"){
+      col.class="grey";
+    } else if (col.class === "marked"){//event.button === 2 &&
+      col.class = "question";
+    } else if(col.class === "grey"){
       col.class = "marked";
     }
 
