@@ -122,6 +122,16 @@ export class AppComponent implements OnInit {
         col.class = "bomb";
         this.end ="end";
 
+        for(var y = 0; y <= this.numRows; y++){
+          for(var x = 0; x <= this.numCols; x++){
+            if(this.rows[y][x].bomb && !this.rows[y][x].visable){
+              console.log("bomb");
+              this.rows[y][x].visable = true;
+              this.rows[y][x].class = "bomb";
+            }
+          }
+        }
+
       } else {
         col.class = classDict[col.number];
       }
