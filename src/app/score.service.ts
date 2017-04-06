@@ -14,6 +14,10 @@ export class ScoreService {
     return this.scores;
   }
 
+  getById(key){
+    return this.angularFire.database.object('score/'+key);
+  }
+
   addScore(scoreObj) {
     this.scores.push(scoreObj);
   }

@@ -11,6 +11,14 @@ const appRoutes: Routes = [
   {
     path: '',
     component: MinesweeperComponent
+  },
+  {
+    path:'challenge/:id',//link on leaderboard to challenge a high(low) score
+    component: MinesweeperComponent
+  },
+  {
+    path:'challenge/:id/:friend',//link sent by friend/challenger
+    component: MinesweeperComponent
   }
  ];
 

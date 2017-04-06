@@ -2,5 +2,5 @@
   leader-board works!
 </p>
 <ul>
-  <li *ngFor="let score of scores">{{score.initials}}: {{score.finalScore}} on {{score.difficulty}}</li>
+  <li *ngFor="let score of scores" (click)="challengeScore(score)">{{score.initials}}: {{score.finalScore}} on {{score.difficulty}}</li>
 </ul>

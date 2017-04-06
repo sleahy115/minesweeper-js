@@ -1,4 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import { NewScoreComponent } from '../new-score/new-score.component';
 import { ScoreService } from '../score.service';
 
@@ -9,6 +11,10 @@ import { ScoreService } from '../score.service';
   providers: [ScoreService]
 })
 export class MinesweeperComponent implements OnInit {
+  opponentId;
+  opponent;
+
+
   title = 'app works!';
   difficulty = "beginner";
   numRows:number = 10;
@@ -22,7 +28,20 @@ export class MinesweeperComponent implements OnInit {
   finalScore:number = 0;
   timerInterval;
 
-  constructor(private ScoreService: ScoreService){}
+  constructor(private route: ActivatedRoute, private ScoreService: ScoreService, private Router: Router){}
+  ngOnInit(){
+    this.route.params.forEach((urlParameters) => {
+      this.opponentId = urlParameters['id'];
+      if(this.opponentId){
+        this.ScoreService.getById(this.opponentId).subscribe(snap=>{
+          this.opponent = snap;
+          this.difficulty = this.opponent.difficulty;
+        });
+        // this.opponent = false;
+      }
+    });
+    this.createBoard(this.difficulty);
+  }
 
   createBoard(difficulty){
     console.log(difficulty);
@@ -218,6 +237,14 @@ export class MinesweeperComponent implements OnInit {
       this.finalScore = this.score;
       clearInterval(this.timerInterval);
       this.timerInterval = null;
+
+      if(this.opponent){
+        if(this.finalScore < this.opponent.finalScore){
+          alert("you beat " + this.opponent.initials);
+        } else if(this.finalScore > this.opponent.finalScore){
+          alert("you failed to beat your opponent: " + this.opponent.initials);
+        }
+      }
     }
   }
 
@@ -236,9 +263,7 @@ export class MinesweeperComponent implements OnInit {
     }
   }
 
-  ngOnInit(){
-    this.createBoard(this.difficulty);
-  }
+
 
   ngDoCheck(){
     // this.createBoard();

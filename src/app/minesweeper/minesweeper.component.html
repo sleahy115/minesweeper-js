@@ -1,12 +1,16 @@
 <h1>{{score}}</h1>
 <h1>{{finalScore}}</h1>
-<select #difficultyInput>
-  <option value="beginner">beginner</option>
-  <option value="intermediate">intermediate</option>
-  <option value="expert">expert</option>
-</select>
-<button (click)="createBoard(difficultyInput.value)">Play</button>
-
+<div id="options" *ngIf="!opponent">
+  <select #difficultyInput>
+    <option value="beginner">beginner</option>
+    <option value="intermediate">intermediate</option>
+    <option value="expert">expert</option>
+  </select>
+  <button (click)="createBoard(difficultyInput.value)">Play</button>
+</div>
+<div id="options" *ngIf="opponent">
+  <h3>Your target score is {{opponent.finalScore}} on {{opponent.difficulty}} difficulty, set by {{opponent.initials}}</h3>
+</div>
 <div id="game">
   <table id="gameTable">
     <tbody>
@@ -23,7 +27,7 @@
   <div *ngIf="win">
     <h1>You Win!</h1>
   </div>
-  <li><a routerLink="leaderboard">Leaderboard</a></li>
+
 
   <app-new-score [finalScore]="finalScore" [difficulty]="difficulty" [gameOver]="ifGameOver()" (newScore)="saveScore($event)"></app-new-score>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ScoreService } from '../score.service';
 
 
@@ -11,7 +12,7 @@ import { ScoreService } from '../score.service';
 export class LeaderBoardComponent implements OnInit  {
   scores;
 
-  constructor(private ScoreService: ScoreService) { }
+  constructor(private ScoreService: ScoreService, private Router: Router) { }
 
   ngOnInit() {
     this.ScoreService.getScores().subscribe(snap => {
@@ -29,6 +30,10 @@ export class LeaderBoardComponent implements OnInit  {
       });
 
     });
+  }
+
+  challengeScore(score){
+    this.Router.navigate(["challenge",score.$key]);
   }
 
 }
