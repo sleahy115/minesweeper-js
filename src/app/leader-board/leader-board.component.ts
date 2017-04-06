@@ -16,8 +16,19 @@ export class LeaderBoardComponent implements OnInit  {
   ngOnInit() {
     this.ScoreService.getScores().subscribe(snap => {
       this.scores = snap;
-    });
 
+       this.scores = this.scores.sort(function(a, b){
+         console.log(a.finalScore + " : " + b.finalScore);
+        if(a.finalScore < b.finalScore){
+          return -1;
+        }
+        if(a.finalScore > b.finalScore){
+          return 1;
+        }
+        return 0;
+      });
+
+    });
   }
 
 }

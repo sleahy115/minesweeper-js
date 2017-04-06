@@ -1,5 +1,6 @@
 <p>
   leader-board works!
 </p>
-
-<li *ngFor="let score of scores">{{score.initials}}</li>
+<ul>
+  <li *ngFor="let score of scores">{{score.initials}}: {{score.finalScore}} on {{score.difficulty}}</li>
+</ul>

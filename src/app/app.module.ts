@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
 import { NewScoreComponent } from './new-score/new-score.component';
 import { MinesweeperComponent } from './minesweeper/minesweeper.component';
+import { SortscorePipe } from './sortscore.pipe';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -23,7 +24,8 @@ export const firebaseConfig = {
     AppComponent,
     LeaderBoardComponent,
     NewScoreComponent,
-    MinesweeperComponent
+    MinesweeperComponent,
+    SortscorePipe
   ],
   imports: [
     BrowserModule,
