@@ -14,7 +14,6 @@ export class MinesweeperComponent implements OnInit {
   opponentId;
   opponent;
 
-
   title = 'app works!';
   difficulty = "beginner";
   numRows:number = 10;
@@ -24,6 +23,7 @@ export class MinesweeperComponent implements OnInit {
   end:string = null;
   win:boolean = false;
   actualBombs: number = 0;
+  markedBombs:number = 0;
   score:number = 0;
   finalScore:number = 0;
   timerInterval;
@@ -142,6 +142,7 @@ export class MinesweeperComponent implements OnInit {
         }
       }
     }
+    this.markedBombs = this.actualBombs;
   }
   ifGameOver(){
     if(this.end!="notOver" || this.win){
@@ -265,6 +266,7 @@ export class MinesweeperComponent implements OnInit {
         col.class = "question";
       } else if(col.class === "grey"){
         col.class = "marked";
+        this.markedBombs--;
       }
       this.isGameWon();
 
