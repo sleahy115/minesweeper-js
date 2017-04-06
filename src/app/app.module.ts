@@ -9,6 +9,7 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
 import { NewScoreComponent } from './new-score/new-score.component';
+import { MinesweeperComponent } from './minesweeper/minesweeper.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -21,7 +22,8 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     LeaderBoardComponent,
-    NewScoreComponent
+    NewScoreComponent,
+    MinesweeperComponent
   ],
   imports: [
     BrowserModule,

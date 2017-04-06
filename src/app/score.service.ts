@@ -10,7 +10,7 @@ export class ScoreService {
   this.scores = angularFire.database.list('score');
   }
 
-  getScore() {
+  getScores() {
     return this.scores;
   }
 

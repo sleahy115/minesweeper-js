@@ -1,0 +1,29 @@
+<h1>{{score}}</h1>
+<h1>{{finalScore}}</h1>
+<select #difficultyInput>
+  <option value="beginner">beginner</option>
+  <option value="intermediate">intermediate</option>
+  <option value="expert">expert</option>
+</select>
+<button (click)="createBoard(difficultyInput.value)">Play</button>
+
+<div id="game">
+  <table id="gameTable">
+    <tbody>
+      <tr *ngFor="let row of rows">
+        <td (click)="checkTile(col)" [class]="col.class" (contextmenu)="markTile($event, col)" *ngFor="let col of row"></td>
+      </tr>
+    <tbody>
+  </table>
+  <h3>Number of bombs: {{actualBombs}}</h3>
+  <div [class]="end">
+      <h2>Sorry you lose, would you like to play again?</h2>
+      <button (click)="createBoard(difficultyInput.value)">Play again</button>
+  </div>
+  <div *ngIf="win">
+    <h1>You Win!</h1>
+  </div>
+  <li><a routerLink="leaderboard">Leaderboard</a></li>
+
+  <app-new-score [finalScore]="finalScore" [difficulty]="difficulty" [gameOver]="ifGameOver()" (newScore)="saveScore($event)"></app-new-score>
+</div>
