@@ -23,6 +23,14 @@ export class AppComponent implements OnInit {
 
   createBoard(difficulty){
     console.log(difficulty);
+    if(this.timerInterval){
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
+    this.score = 0;
+    this.finalScore = 0;
+    this.actualBombs = 0;
+
     this.difficulty = difficulty;
     this.rows = [];
     this.end = "notOver";
@@ -125,6 +133,7 @@ export class AppComponent implements OnInit {
         this.score++;
       },1000);
     }
+
     if(col.class != "marked" && col.class != "question" && !this.ifGameOver()){
       col.visible = true;
       var classDict = {
@@ -149,6 +158,8 @@ export class AppComponent implements OnInit {
             }
           }
         }
+        clearInterval(this.timerInterval);
+        this.timerInterval = null;
 
       } else {
         col.class = classDict[col.number];
@@ -202,7 +213,8 @@ export class AppComponent implements OnInit {
     if(this.actualBombs === marks){
       this.win=true;
       this.finalScore = this.score;
-      this.timerInterval.clear();
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
     }
   }
 
