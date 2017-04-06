@@ -8,6 +8,7 @@ import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
+import { NewScoreComponent } from './new-score/new-score.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -19,7 +20,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    LeaderBoardComponent
+    LeaderBoardComponent,
+    NewScoreComponent
   ],
   imports: [
     BrowserModule,

@@ -24,4 +24,6 @@
     <h1>You Win!</h1>
   </div>
   <li><a routerLink="leaderboard">Leaderboard</a></li>
+
+  <app-new-score [finalScore]="finalScore" [difficulty]="difficulty" [gameOver]="ifGameOver()" (newScore)="saveScore($event)"></app-new-score>
 </div>

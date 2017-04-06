@@ -1,0 +1,7 @@
+
+<form *ngIf="gameOver">
+  <h2>You scored {{finalScore}} on {{difficulty}}</h2>
+  <label>Initals</label>
+  <input #newInitials>
+  <button (click)="submitScore(newInitials.value)">Submit</button>
+</form>

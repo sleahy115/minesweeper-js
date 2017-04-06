@@ -1,9 +1,12 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
+import { NewScoreComponent } from './new-score/new-score.component';
+import { ScoreService } from './score.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [ScoreService]
 })
 export class AppComponent implements OnInit {
   title = 'app works!';
@@ -19,7 +22,7 @@ export class AppComponent implements OnInit {
   finalScore:number = 0;
   timerInterval;
 
-  constructor(){}
+  constructor(private ScoreService: ScoreService){}
 
   createBoard(difficulty){
     console.log(difficulty);
@@ -35,8 +38,8 @@ export class AppComponent implements OnInit {
     this.rows = [];
     this.end = "notOver";
     if(this.difficulty === "beginner"){
-      this.numRows = 10;
-      this.numCols = 10;
+      this.numRows = 1;
+      this.numCols = 1;
       this.numBombs = 10;
     } else if( this.difficulty === "intermediate"){
       this.numRows = 16;
@@ -239,5 +242,9 @@ export class AppComponent implements OnInit {
 
   ngDoCheck(){
     // this.createBoard();
+  }
+  saveScore(scoreObj) {
+    console.log(scoreObj);
+    this.ScoreService.addScore(scoreObj);
   }
 }
