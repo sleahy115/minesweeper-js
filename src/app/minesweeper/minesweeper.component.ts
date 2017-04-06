@@ -36,6 +36,8 @@ export class MinesweeperComponent implements OnInit {
         this.ScoreService.getById(this.opponentId).subscribe(snap=>{
           this.opponent = snap;
           this.difficulty = this.opponent.difficulty;
+          this.createBoard(this.difficulty);
+
         });
         // this.opponent = false;
       }
@@ -57,8 +59,8 @@ export class MinesweeperComponent implements OnInit {
     this.rows = [];
     this.end = "notOver";
     if(this.difficulty === "beginner"){
-      this.numRows = 1;
-      this.numCols = 1;
+      this.numRows = 10;
+      this.numCols = 10;
       this.numBombs = 10;
     } else if( this.difficulty === "intermediate"){
       this.numRows = 16;
@@ -180,6 +182,7 @@ export class MinesweeperComponent implements OnInit {
             }
           }
         }
+        this.checkAgainstOpponent();
         clearInterval(this.timerInterval);
         this.timerInterval = null;
 
@@ -238,12 +241,17 @@ export class MinesweeperComponent implements OnInit {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
 
-      if(this.opponent){
-        if(this.finalScore < this.opponent.finalScore){
-          alert("you beat " + this.opponent.initials);
-        } else if(this.finalScore > this.opponent.finalScore){
-          alert("you failed to beat your opponent: " + this.opponent.initials);
-        }
+      this.checkAgainstOpponent();
+    }
+  }
+  checkAgainstOpponent(){
+    if(this.opponent){
+      if(this.finalScore < this.opponent.finalScore && this.end !="end"){
+        alert("you beat " + this.opponent.initials);
+      } else if(this.finalScore > this.opponent.finalScore){
+        alert("you failed to beat your opponent: " + this.opponent.initials);
+      } else {
+        alert("You could not beat "+ this.opponent.initials+" Try again.")
       }
     }
   }
