@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
 import { NewScoreComponent } from './new-score/new-score.component';
 import { MinesweeperComponent } from './minesweeper/minesweeper.component';
-import { SortscorePipe } from './sortscore.pipe';
+import { DifficultySortPipe } from './difficulty-sort.pipe';
 import { EditScoreComponent } from './edit-score/edit-score.component';
 
 export const firebaseConfig = {
@@ -26,7 +26,7 @@ export const firebaseConfig = {
     LeaderBoardComponent,
     NewScoreComponent,
     MinesweeperComponent,
-    SortscorePipe,
+    DifficultySortPipe,
     EditScoreComponent
   ],
   imports: [

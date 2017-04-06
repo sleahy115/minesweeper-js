@@ -279,8 +279,8 @@ export class MinesweeperComponent implements OnInit {
   ngDoCheck(){
     // this.createBoard();
   }
+
   saveScore(scoreObj) {
-    console.log(scoreObj);
     this.ScoreService.addScore(scoreObj);
   }
 }

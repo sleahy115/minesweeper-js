@@ -1,8 +1,13 @@
-<p>
-  leader-board works!
-</p>
+<div>
+  <h3>Sort by difficulty</h3>
+  <select #searchDifficulty (change)="difficulty = searchDifficulty.value">
+    <option value="all">all</option>
+    <option value="beginner">beginner</option>
+    <option value="intermediate">intermediate</option>
+    <option value="expert">expert</option>
+  </select>
 <ul>
-  <div *ngFor="let score of scores">
+  <div *ngFor="let score of scores | difficultySort:difficulty">
   <li  (contextmenu)="challengeScore($event,score)"  (click)="selectScore(score)">{{score.initials}}: {{score.finalScore}} on {{score.difficulty}}</li>
   <button (click)="delete(score)">Delete</button>
 </div>

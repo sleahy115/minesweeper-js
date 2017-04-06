@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScoreService } from '../score.service';
+import { DifficultySortPipe } from '../difficulty-sort.pipe';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { ScoreService } from '../score.service';
 export class LeaderBoardComponent implements OnInit  {
   scores;
   selectedScore = false;
+  difficulty = "all";
 
   constructor(private ScoreService: ScoreService, private Router: Router) { }
 
