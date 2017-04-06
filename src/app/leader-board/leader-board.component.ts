@@ -11,6 +11,7 @@ import { ScoreService } from '../score.service';
 })
 export class LeaderBoardComponent implements OnInit  {
   scores;
+  selectedScore = false;
 
   constructor(private ScoreService: ScoreService, private Router: Router) { }
 
@@ -31,8 +32,22 @@ export class LeaderBoardComponent implements OnInit  {
 
     });
   }
+  selectScore(score){
+    this.selectedScore = score;
+  }
 
-  challengeScore(score){
+  editScore(score) {
+    this.ScoreService.editScore(score);
+  }
+
+  delete(score) {
+    if(confirm("Are you sure you want to delete this name?")) {
+      this.ScoreService.deleteScore(score)
+    }
+  }
+
+  challengeScore(e, score){
+    e.preventDefault();
     this.Router.navigate(["challenge",score.$key]);
   }
 

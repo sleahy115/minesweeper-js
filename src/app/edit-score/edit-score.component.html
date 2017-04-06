@@ -1,0 +1,6 @@
+<form *ngIf="selectedScore">
+  <h2>Edit Name</h2>
+  <label>Initals</label>
+  <input name="selectedScore" [(ngModel)]="selectedScore.initials">
+  <button (click)="editScore()">Edit</button>
+</form>

@@ -264,6 +264,7 @@ export class MinesweeperComponent implements OnInit {
         col.class="grey";
       } else if (col.class === "marked"){//event.button === 2 &&
         col.class = "question";
+        this.markedBombs++;
       } else if(col.class === "grey"){
         col.class = "marked";
         this.markedBombs--;

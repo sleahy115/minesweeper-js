@@ -22,4 +22,14 @@ export class ScoreService {
     this.scores.push(scoreObj);
   }
 
+  editScore(score){
+    var entry = this.getById(score.$key);
+    entry.update(score);
+  }
+
+  deleteScore(score){
+    var entry = this.getById(score.$key);
+    entry.remove();
+  }
+
 }

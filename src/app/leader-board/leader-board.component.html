@@ -2,5 +2,10 @@
   leader-board works!
 </p>
 <ul>
-  <li *ngFor="let score of scores" (click)="challengeScore(score)">{{score.initials}}: {{score.finalScore}} on {{score.difficulty}}</li>
+  <div *ngFor="let score of scores">
+  <li  (contextmenu)="challengeScore($event,score)"  (click)="selectScore(score)">{{score.initials}}: {{score.finalScore}} on {{score.difficulty}}</li>
+  <button (click)="delete(score)">Delete</button>
+</div>
 </ul>
+
+<app-edit-score [selectedScore]="selectedScore" (updateScoreSender)="editScore($event)"></app-edit-score>
