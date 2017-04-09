@@ -1,28 +1,38 @@
 # Experince95
 
+## Description
+Remember your past with an app that allows a user to play minesweeper and save their scores to a leaderboard. The user can also challenge a friend to play against a certain set score.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
-## Development server
+## Setup
+* clone repository from https://github.com/sleahy115/minesweeper-js.git
+* `npm install -g @angular/cli`
+* ` cd minesweeper-js`
+* `npm install`
+* `bower install`
+* `ng-serve`
+*  To add firebase...
+   * `touch api-keys.ts` in the app folder
+   * go to  https://firebase.google.com/ to set up an account
+   * create a project in firebase called gymnast-roster
+   * select the option to add firebase to web app
+   * copy the information from the pop up into the api-keys.ts file
+   * code example- in src/app-keys.ts
+   `export var masterFirebaseConfig = {
+      apiKey: "xxxx",
+      authDomain: "xxxx.firebaseapp.com",
+      databaseURL: "https://xxxx.firebaseio.com",
+      storageBucket: "xxxx.appspot.com",
+      messagingSenderId: "xxxx"
+    };`
+    * add the api-keys file to the gitignore file.
+* This project is also hosted at https://minesweeper-de6d0.firebaseapp.com/
 
+## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
 ## Further help
-
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+Copyright (c) 2017 Sarah Leahy, Dylan Stackhouse All Rights Reserved.
