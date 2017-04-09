@@ -29,6 +29,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     * add the api-keys file to the gitignore file.
 * This project is also hosted at https://minesweeper-de6d0.firebaseapp.com/
 
+## Technologies used
+* Angular 2 CLI -https://cli.angular.io/
+* Bootstrap -http://getbootstrap.com/
+* Firebase -https://firebase.google.com/
+* Node JS -https://nodejs.org/en/
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
